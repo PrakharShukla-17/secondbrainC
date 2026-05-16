@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background-color: #f4f4f8;
+    color: #1a1a2e;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+}
+
+/* Card embed styles */
+.embed-wrapper iframe {
+  border-radius: 8px;
+  max-width: 100%;
+}
+
+/* Twitter embed fix */
+.twitter-tweet { margin: 0 auto !important; }
+
+/* Staggered animation delays */
+.stagger-1 { animation-delay: 0.05s; }
+.stagger-2 { animation-delay: 0.1s; }
+.stagger-3 { animation-delay: 0.15s; }
+.stagger-4 { animation-delay: 0.2s; }
+.stagger-5 { animation-delay: 0.25s; }
