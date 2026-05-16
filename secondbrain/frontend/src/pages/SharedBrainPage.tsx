@@ -13,7 +13,7 @@ export default function SharedBrainPage() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/api/share/${token}`)
+      .get(`${import.meta.env.VITE_API_URL}/share/${token}`)
       .then((res) => setData(res.data))
       .catch(() => setNotFound(true))
       .finally(() => setLoading(false));
