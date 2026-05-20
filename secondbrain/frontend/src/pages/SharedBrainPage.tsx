@@ -33,10 +33,10 @@ export default function SharedBrainPage() {
         <div className="w-20 h-20 rounded-2xl bg-gray-100 flex items-center justify-center mb-4">
           <Lock className="w-10 h-10 text-gray-300" />
         </div>
-        <h1 className="text-2xl font-bold text-gray-900 mb-2">Brain not found</h1>
+        <h1 className="text-2xl font-bold text-gray-900 mb-2">Brain not found, PSYCH!!</h1>
         <p className="text-gray-500 mb-6">This shared brain doesn't exist or has been made private.</p>
         <Link to="/login" className="px-5 py-2.5 bg-brain-600 text-white rounded-xl text-sm font-medium hover:bg-brain-700 transition-colors">
-          Create your own brain
+          Create your own brain nerd.
         </Link>
       </div>
     );
@@ -73,7 +73,7 @@ export default function SharedBrainPage() {
         </div>
         {data.content.length === 0 ? (
           <div className="text-center py-24">
-            <p className="text-gray-400">This brain is empty</p>
+            <p className="text-gray-400">This brain is empty just like yours</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">

@@ -57,9 +57,9 @@ export default function DashboardPage() {
   );
 
   return (
-    <div className="min-h-screen bg-surface flex">
+    <div className="min-h-screen font-jersey bg-surface flex">
       {/* Sidebar */}
-      <div className="hidden md:flex flex-col fixed left-0 top-0 bottom-0 w-64 bg-white border-r border-gray-100 p-2 z-30">
+      <div className="hidden md:flex bg-brain-200 flex-col fixed left-0 top-0 bottom-0 w-64 bg-white border-r border-gray-100 p-2 z-30">
         <Sidebar active={filter} onChange={setFilter} username={username || ''} />
         <div className="p-3 border-t border-gray-100 mt-auto">
           <button
@@ -84,7 +84,7 @@ export default function DashboardPage() {
           </div>
 
           {/* Search */}
-          <div className="relative flex-1 max-w-md">
+          {/* <div className="relative flex-1 max-w-md">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
             <input
               type="text"
@@ -93,7 +93,7 @@ export default function DashboardPage() {
               placeholder="Search your brain..."
               className="w-full pl-9 pr-4 py-2 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brain-400 bg-gray-50"
             />
-          </div>
+          </div> */}
 
           <div className="flex items-center gap-2 ml-auto">
             <button
@@ -152,11 +152,17 @@ export default function DashboardPage() {
               )}
             </div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-              {filtered.map((item, i) => (
-                <ContentCard key={item._id} item={item} onDelete={handleDelete} index={i} />
-              ))}
-            </div>
+            <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4">
+  {filtered.map((item, i) => (
+    <div key={item._id} className="break-inside-avoid mb-4">
+      <ContentCard
+        item={item}
+        onDelete={handleDelete}
+        index={i}
+      />
+    </div>
+  ))}
+</div>
           )}
         </main>
       </div>

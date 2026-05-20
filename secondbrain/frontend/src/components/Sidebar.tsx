@@ -18,13 +18,13 @@ const filters: { key: ContentType | 'all'; label: string; icon: React.ElementTyp
 
 export default function Sidebar({ active, onChange, username }: Props) {
   return (
-    <aside className="w-64 shrink-0 flex flex-col">
+    <aside className="w-64 shrink-0 flex flex-col ">
       {/* Logo */}
       <div className="flex items-center gap-2.5 px-4 py-6">
         <div className="w-8 h-8 rounded-xl bg-brain-600 flex items-center justify-center">
           <Brain className="w-5 h-5 text-white" />
         </div>
-        <span className="font-bold text-lg text-gray-900 tracking-tight">SecondBrain</span>
+        <span className="font-jersey text-2xl text-gray-900 ">SecondBrain</span>
       </div>
 
       {/* User badge */}
@@ -35,7 +35,7 @@ export default function Sidebar({ active, onChange, username }: Props) {
 
       {/* Nav */}
       <nav className="flex-1 px-3 space-y-0.5">
-        <p className="px-2 pt-2 pb-1.5 text-xs font-semibold text-gray-400 uppercase tracking-wider">Filter by source</p>
+        <p className="px-2 pt-2 pb-1.5 text-xs font-semibold text-gray-600 uppercase tracking-wider">What? filtered by source, unreal!</p>
         {filters.map(({ key, label, icon: Icon, color }) => (
           <button
             key={key}

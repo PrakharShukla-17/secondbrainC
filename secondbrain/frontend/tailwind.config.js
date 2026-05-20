@@ -6,6 +6,11 @@ export default {
       fontFamily: {
         display: ['"DM Sans"', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'monospace'],
+        poppins: ['Poppins', 'sans-serif'],
+    outfit: ['Outfit', 'sans-serif'],
+    pixel: ['Pixelify Sans', 'sans-serif'],
+    jakarta: ['Plus Jakarta Sans', 'sans-serif'],
+    jersey: ['"Jersey 25"', 'sans-serif'],
       },
       colors: {
         brain: {

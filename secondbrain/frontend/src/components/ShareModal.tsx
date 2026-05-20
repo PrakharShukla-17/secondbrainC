@@ -47,7 +47,7 @@ export default function ShareModal({ onClose }: Props) {
         <div className="flex items-center justify-between p-6 pb-4 border-b border-gray-100">
           <div>
             <h2 className="text-lg font-semibold text-gray-900">Share Your Brain</h2>
-            <p className="text-sm text-gray-500 mt-0.5">Let others explore your saved content</p>
+            <p className="text-sm text-gray-500 mt-0.5">Let others invade your privacy</p>
           </div>
           <button onClick={onClose} className="p-2 hover:bg-gray-100 rounded-xl transition-colors">
             <X className="w-5 h-5 text-gray-500" />

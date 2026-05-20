@@ -28,7 +28,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-surface flex">
+    <div className="min-h-screen font-jersey bg-surface flex">
       {/* Left panel */}
       <div className="hidden lg:flex w-1/2 bg-brain-950 flex-col justify-between p-12 relative overflow-hidden">
         <div className="absolute inset-0">
@@ -54,16 +54,16 @@ export default function LoginPage() {
           <span className="text-white font-bold text-xl">SecondBrain</span>
         </div>
         <div className="relative">
-          <h1 className="text-5xl font-bold text-white leading-tight mb-4">
-            Welcome<br />
-            <span className="text-brain-400">back.</span>
+          <h1 className="text-5xl  font-bold text-white leading-tight mb-4">
+            Not You<br />
+            <span className="text-brain-400">Again.</span>
           </h1>
           <p className="text-gray-400 text-lg">
             Your saved links and knowledge are waiting for you.
           </p>
         </div>
         <div className="relative text-gray-600 text-sm font-mono">
-          // your memory, extended
+          your memory, extended
         </div>
       </div>
 

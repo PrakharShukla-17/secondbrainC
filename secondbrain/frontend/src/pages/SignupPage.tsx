@@ -29,7 +29,7 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="min-h-screen bg-surface flex">
+    <div className="min-h-screen bg-surface font-jersey flex">
       {/* Left panel */}
       <div className="hidden lg:flex w-1/2 bg-brain-600 flex-col justify-between p-12 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
@@ -49,7 +49,7 @@ export default function SignupPage() {
             <span className="text-brain-200">organized.</span>
           </h1>
           <p className="text-brain-200 text-lg leading-relaxed">
-            Save YouTube videos, tweets, Reddit posts, and articles. Build a personal knowledge base you can actually find things in.
+            Save YouTube videos, tweets, Reddit posts, and articles and never see them again in your damn life.
           </p>
         </div>
         <div className="relative flex gap-4">
@@ -70,7 +70,7 @@ export default function SignupPage() {
               <span className="font-bold text-lg">SecondBrain</span>
             </div>
             <h2 className="text-2xl font-bold text-gray-900">Create your account</h2>
-            <p className="text-gray-500 mt-1">Start building your second brain today</p>
+            <p className="text-gray-500 mt-1">Start building your second brain today cause you can.</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -124,7 +124,7 @@ export default function SignupPage() {
           </form>
 
           <p className="text-center text-sm text-gray-500 mt-6">
-            Already have an account?{' '}
+            Already have an account? Aww...Signin then chubby{' '}
             <Link to="/login" className="text-brain-600 font-medium hover:underline">Sign in</Link>
           </p>
         </div>
