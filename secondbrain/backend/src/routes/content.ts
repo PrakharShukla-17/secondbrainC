@@ -46,7 +46,6 @@ router.post("/", authMiddleware, async (req: AuthRequest, res: Response): Promis
       tags: tags || [],
     });
     indexContent(String(content._id)).catch(console.error);
-res.json({ message: "Content added" });
     res.status(201).json(content);
   } catch {
     res.status(500).json({ message: "Server error" });
