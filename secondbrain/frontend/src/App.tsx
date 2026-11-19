@@ -4,7 +4,7 @@ import SignupPage from './pages/SignupPage';
 import LoginPage from './pages/LoginPage';
 import DashboardPage from './pages/DashboardPage';
 import SharedBrainPage from './pages/SharedBrainPage';
-
+import AskPage from './pages/AskPage';
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { token } = useAuth();
   return token ? <>{children}</> : <Navigate to="/login" replace />;
@@ -23,6 +23,7 @@ export default function App() {
         <Route path="/signup" element={<PublicRoute><SignupPage /></PublicRoute>} />
         <Route path="/login" element={<PublicRoute><LoginPage /></PublicRoute>} />
         <Route path="/dashboard" element={<ProtectedRoute><DashboardPage /></ProtectedRoute>} />
+        <Route path="/ask" element={<ProtectedRoute><AskPage /></ProtectedRoute>} />
         <Route path="/shared/:token" element={<SharedBrainPage />} />
       </Routes>
     </BrowserRouter>
