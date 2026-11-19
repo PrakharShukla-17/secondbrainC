@@ -9,6 +9,10 @@ export interface IContent extends Document {
   title: string;
   tags: string[];
   createdAt: Date;
+  extractedText: string;
+  embedding: number[];
+  vectorId:string;
+  indexed:boolean
 }
 
 const ContentSchema = new Schema<IContent>(
@@ -22,8 +26,13 @@ const ContentSchema = new Schema<IContent>(
     url: { type: String, required: true },
     title: { type: String, required: true },
     tags: [{ type: String }],
+    extractedText: { type: String },
+embedding: { type: [Number], select: false },
+vectorId: { type: String, index: true },
+indexed: { type: Boolean, default: false },
   },
   { timestamps: true }
+  
 );
 
 export const Content = mongoose.model<IContent>("Content", ContentSchema);

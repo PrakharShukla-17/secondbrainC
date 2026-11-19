@@ -1,12 +1,16 @@
+
+import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
-import dotenv from "dotenv";
 import authRoutes from "./routes/auth";
 import contentRoutes from "./routes/content";
 import shareRoutes from "./routes/share";
+import askRouter from "./routes/ask";
+import { ensureCollection } from "./services/vector";
 
-dotenv.config();
+
+
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -19,20 +23,33 @@ app.use(cors({
   credentials: true
 }));
 app.use(express.json());
-
+app.use("/api/v1/ask", askRouter);
 app.use("/api/auth", authRoutes);
 app.use("/api/content", contentRoutes);
 app.use("/api/share", shareRoutes);
 
-app.get("/health", (_, res) => res.json({ status: "ok" }));
+
+
+// app.get("/health", (_, res) => res.json({ status: "ok" }));
+
+
+
+
+
+
+
+
+
 
 mongoose
   .connect(process.env.MONGO_URI!)
   .then(() => {
     console.log("✅ Connected to MongoDB");
     app.listen(PORT, () => console.log(`🚀 Server running on http://localhost:${PORT}`));
+    
   })
   .catch((err) => {
     console.error("❌ MongoDB connection failed:", err.message);
     process.exit(1);
-  });
+  }
+);

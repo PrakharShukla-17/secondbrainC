@@ -1,6 +1,8 @@
 import { Router, Response } from "express";
 import { authMiddleware, AuthRequest } from "../middleware/auth";
 import { Content, ContentType } from "../models/Content";
+import { indexContent } from "../services/indexer";
+import { deleteVector } from "../services/vector";
 import mongoose from "mongoose";
 
 const router = Router();
@@ -43,6 +45,8 @@ router.post("/", authMiddleware, async (req: AuthRequest, res: Response): Promis
       type,
       tags: tags || [],
     });
+    indexContent(String(content._id)).catch(console.error);
+res.json({ message: "Content added" });
     res.status(201).json(content);
   } catch {
     res.status(500).json({ message: "Server error" });
@@ -56,10 +60,12 @@ router.delete("/:id", authMiddleware, async (req: AuthRequest, res: Response): P
       _id: req.params.id,
       userId: new mongoose.Types.ObjectId(req.userId),
     });
+
     if (!content) {
       res.status(404).json({ message: "Content not found" });
       return;
     }
+    if (content.vectorId) await deleteVector(content.vectorId);
     res.json({ message: "Deleted" });
   } catch {
     res.status(500).json({ message: "Server error" });
