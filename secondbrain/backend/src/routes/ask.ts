@@ -6,6 +6,9 @@ import { searchVectors } from "../services/vector";
 
 const router = Router();
 
+const MIN_SCORE = 0.55;  // absolute cutoff, tune using the logged scores
+const KEEP_RATIO = 0.85; // keep hits within 85% of the best score
+
 router.post("/", authMiddleware, async (req, res) => {
   try {
     const { query, mode } = req.body as { query?: string; mode?: "answer" | "search" };
@@ -18,7 +21,14 @@ router.post("/", authMiddleware, async (req, res) => {
       String((req as any).userId),
       5
     );
-    const ids = hits.map((h) => h.payload!.mongoId as string);
+
+    // temporary: remove once you've picked your thresholds
+    console.log(hits.map((h) => `${h.score.toFixed(3)} ${h.payload?.mongoId}`));
+
+    const best = hits[0]?.score ?? 0;
+    const kept = hits.filter((h) => h.score >= MIN_SCORE && h.score >= best * KEEP_RATIO);
+    const ids = kept.map((h) => h.payload!.mongoId as string);
+
     const docs = await Content.find({ _id: { $in: ids } }).lean();
 
     // restore similarity order
@@ -44,7 +54,7 @@ router.post("/", authMiddleware, async (req, res) => {
       .join("\n\n");
 
     const completion = await ai.models.generateContent({
-      model: "gemini-3.8-flash",
+      model: process.env.GEMINI_CHAT_MODEL ?? "gemini-3.8-flash",
       contents: `Sources:\n${context}\n\nQuestion: ${query}`,
       config: {
         systemInstruction:

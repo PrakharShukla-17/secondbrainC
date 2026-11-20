@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Brain, Lock } from 'lucide-react';
-import axios from 'axios';
+import api from '../lib/api';
 import { SharedBrain, ContentType } from '../types';
 import ContentCard from '../components/ContentCard';
 
@@ -12,9 +12,14 @@ export default function SharedBrainPage() {
   const [notFound, setNotFound] = useState(false);
 
   useEffect(() => {
-    axios
-      .get(`${import.meta.env.VITE_API_URL}/share/${token}`)
-      .then((res) => setData(res.data))
+    api
+      .get(`/share/${token}`)
+      .then((res) => {
+        if (!res.data || !Array.isArray(res.data.content)) {
+          throw new Error('Unexpected response');
+        }
+        setData(res.data);
+      })
       .catch(() => setNotFound(true))
       .finally(() => setLoading(false));
   }, [token]);
